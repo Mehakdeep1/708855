@@ -1,37 +1,71 @@
-## Welcome to GitHub Pages
+package c0708855;
 
-You can use the [editor on GitHub](https://github.com/Mehakdeep1/708855/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+import java.util.Random;
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+public class C0708855{
 
-### Markdown
+public static void main(String[] args) {
+        jungle j1 = new jungle();
+        j1.launch();
+        System.out.println("Number of Lion winners is " + jungle.NumberOfLionWinners);
+        System.out.println("Number of Tiger winners is " + jungle.NumberOfTigerWinners);
+    }
+}
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+// let's make a Super Class called FELINE
+class Feline{
+    public String name;
+    public int Strength;
 
-```markdown
-Syntax highlighted code block
+    public Feline(){
+         Strength = SetStrength();
+     }
+    
+    public int SetStrength(){
+        Random rand = new Random(); 
+        return rand.nextInt(10000);
+    }
+}
+ class lion extends Feline{
 
-# Header 1
-## Header 2
-### Header 3
+ }  
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Mehakdeep1/708855/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+class tiger extends Feline{
+  public tiger(){
+         
+  }
+     }
+ 
+class jungle {
+    // these are Class Instance Variables:
+    // because they are declared at the Class Level
+    // here is where the TYPE is defined
+    public static int NumberOfLionWinners = 0;
+    public static int NumberOfTigerWinners = 0;
+    
+     lion LION1;
+     tiger TIGER1;
+         
+     public void launch(){
+         // HERE is where the OBJECT IS CREATED
+            LION1 = new lion();
+            TIGER1 = new tiger();
+            
+            doCompetition(LION1, TIGER1);
+            
+     }
+     
+     public void doCompetition(Feline lion, Feline tiger){
+            
+         if (lion.Strength > tiger.Strength){
+             jungle.NumberOfLionWinners++;
+         } else
+            {
+             jungle.NumberOfTigerWinners++;
+         } else
+             {
+               if(tiger.Strength == lion.Strength){  
+                   {jungle.NumberOfDraws++;}}
+         }
+     }
+}
